@@ -1,0 +1,30 @@
+﻿@tailwind base;
+
+@layer base {
+    html, body {
+        @apply font-body;
+    }
+
+    h1 {
+        @apply text-2xl;
+    }
+
+    h2 {
+        @apply text-xl;
+    }
+
+    h3 {
+        @apply text-lg;
+    }
+
+    a {
+        @apply text-blue-600 no-underline cursor-pointer;
+    }
+
+    button {
+        @apply p-1.5 p-2 rounded;
+    }
+}
+
+@tailwind components;
+@tailwind utilities;
