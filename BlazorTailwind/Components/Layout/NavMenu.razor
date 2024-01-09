@@ -1,24 +1,26 @@
 ﻿@using Blazor.Heroicons.Solid
 
-<nav class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-    <div class="h-full overflow-y-auto bg-indigo-950 bg-gradient-to-t from-purple-900">
+<nav id="menu" class="fixed top-0 left-0 z-40 max-sm:w-full" aria-label="Sidebar">
+    <div class="overflow-y-auto bg-indigo-950 bg-gradient-to-t from-purple-900">
         <div class="p-3 pl-6 sm:mb-0 bg-black/[.4]">
             <a class="text-2xl hover:no-underline text-white" href="">BlazorTailwind</a>
+
+            <MenuButton ShowMenuToggled="ShowMenuToggled" class="sm:hidden right-5 absolute inline" />
         </div>
-        <ul class="font-medium px-3 py-4">
+        <ul class="font-medium px-3 py-4 w-64 h-screen @(showMenu ? "" : "max-sm:hidden")">
             <li class="text-lg hover:bg-white/[.1] rounded ml-2">
                 <NavLink class="p-2 mb-2 list-item text-white hover:no-underline" ActiveClass="bg-white/[.25] rounded" href="" Match="NavLinkMatch.All">
                     <HomeIcon class="h-6 w-6 inline" /> Home
                 </NavLink>
             </li>
             <li class="text-lg hover:bg-white/[.1] rounded ml-2">
-                <NavLink class="p-2 mb-2 list-item text-white hover:no-underline" ActiveClass="bg-white/[.25]" href="counter">
+                <NavLink class="p-2 mb-2 list-item text-white hover:no-underline" ActiveClass="bg-white/[.25] rounded" href="counter">
                     <PlusIcon class="h-6 w-6 inline" /> Counter
                 </NavLink>
             </li>
 
             <li class="text-lg hover:bg-white/[.1] rounded ml-2">
-                <NavLink class="p-2 mb-2 list-item text-white hover:no-underline" ActiveClass="bg-white/[.25]" href="weather">
+                <NavLink class="p-2 mb-2 list-item text-white hover:no-underline" ActiveClass="bg-white/[.25] rounded" href="weather">
                     <ListBulletIcon class="h-6 w-6 inline" /> Weather
                 </NavLink>
             </li>
@@ -26,3 +28,11 @@
     </div>
 </nav>
 
+@code {
+    private bool showMenu { get; set; } = false;
+
+    private void ShowMenuToggled(bool showMenu)
+    {
+        this.showMenu = showMenu;
+    }
+}

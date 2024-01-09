@@ -1,0 +1,28 @@
+﻿@using Blazor.Heroicons.Solid
+
+<div @attributes=AdditionalAttributes>
+    <EditForm FormName="Toggle" Model="this" Enhance OnSubmit="ToggleMenu">
+         <InputCheckbox @bind-Value="ShowMenu" hidden />
+         <button type="submit" class="inline-flex items-center p-2 ms-3 text-sm text-gray-500 rounded-lg">
+             <span class="sr-only">Open sidebar</span>
+             <Bars3Icon class="h-6 w-6" />
+         </button>
+     </EditForm>
+</div>
+
+ @code {
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IDictionary<string, object>? AdditionalAttributes { get; set; }
+
+    [SupplyParameterFromForm]
+    public bool ShowMenu { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> ShowMenuToggled { get; set; }
+
+    protected async Task ToggleMenu()
+    {
+        ShowMenu = !ShowMenu;
+        await ShowMenuToggled.InvokeAsync(ShowMenu);
+    }
+}
