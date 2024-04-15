@@ -9,7 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BlazorTailwind.Client\BlazorTailwind.Client.csproj" />
     <PackageReference Include="Blazor.Heroicons" Version="2.1.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.4" />
     <PackageReference Include="Tailwind.Extensions.AspNetCore" Version="1.1.0-beta1" />
   </ItemGroup>
 
